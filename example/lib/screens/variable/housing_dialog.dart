@@ -64,12 +64,12 @@ class HousingDialog extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () {
                       provider.trackConversion(Constants.GOAL_UPGRADE_CLICKED);
                       Navigator.of(context).pop();
                     },
-                    color: ColorConstant.HOUSE_DIALOG_BUTTON_COLOR,
+                    style:ElevatedButton.styleFrom(backgroundColor:ColorConstant.HOUSE_DIALOG_BUTTON_COLOR),
                     child: Container(
                       child: Text(
                         StringConstant.HOUSE_DIALOG_UPRAGE,
@@ -80,11 +80,11 @@ class HousingDialog extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    color: ColorConstant.HOUSE_DIALOG_BUTTON_COLOR,
+                    style:ElevatedButton.styleFrom(backgroundColor:ColorConstant.HOUSE_DIALOG_BUTTON_COLOR),
                     child: Container(
                       child: Text(
                         StringConstant.HOUSE_DIALOG_CANCEL,
