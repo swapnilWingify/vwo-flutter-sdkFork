@@ -3,8 +3,10 @@ version '1.0.1'
 
 buildscript {
     repositories {
+        mavenLocal()
         google()
         jcenter()
+        mavenCentral()
     }
 
     dependencies {
@@ -14,8 +16,10 @@ buildscript {
 
 rootProject.allprojects {
     repositories {
+        mavenLocal()
         google()
         jcenter()
+        mavenCentral()
     }
 }
 
@@ -42,4 +46,3 @@ dependencies {
     compileOnly 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
 }
-
