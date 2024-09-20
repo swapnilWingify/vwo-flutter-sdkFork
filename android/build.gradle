@@ -1,7 +1,8 @@
-group 'com.vwo.flutter'
+group "com.vwo.vwo_flutter"
 version '1.0.1'
 
 buildscript {
+    ext.kotlin_version = '1.7.10'
     repositories {
         mavenLocal()
         google()
@@ -10,11 +11,11 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:7.3.0'
     }
 }
 
-rootProject.allprojects {
+allprojects {
     repositories {
         mavenLocal()
         google()
@@ -26,23 +27,37 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 30
-    namespace "com.vwo.vwo_flutter"
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.vwo.vwo_flutter'
+    }
+
+    compileSdkVersion 33
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
     }
-    lintOptions {
-        disable 'InvalidPackage'
-    }
-}
 
-dependencies {
-    implementation 'com.vwo:mobile:2.7.0@aar'
-    implementation ('io.socket:socket.io-client:1.0.0') {
-        // excluding org.json which is provided by Android
-        exclude group: 'org.json', module: 'json'
+    dependencies {
+        implementation 'com.vwo:mobile:2.7.0@aar'
+        implementation('io.socket:socket.io-client:1.0.0') {
+            // excluding org.json which is provided by Android
+            exclude group: 'org.json', module: 'json'
+        }
+        compileOnly 'androidx.annotation:annotation:1.1.0'
+        implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
+        testOptions {
+            unitTests.all {
+                testLogging {
+                    events "passed", "skipped", "failed", "standardOut", "standardError"
+                    outputs.upToDateWhen { false }
+                    showStandardStreams = true
+                }
+            }
+        }
     }
-    compileOnly 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
 }
