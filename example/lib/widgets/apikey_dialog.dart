@@ -65,7 +65,7 @@ class _APIKeyDialogState extends State<APIKeyDialog> {
               // scrollPadding: EdgeInsets.only(bottom: 50),
               textInputAction: TextInputAction.done,
               style:
-                  Theme.of(context).textTheme.headline5!.copyWith(fontSize: 18),
+                  Theme.of(context).textTheme.headlineLarge!.copyWith(fontSize: 18),
               maxLength: 39,
               decoration: InputDecoration(
                 labelText: StringConstant.ENTER_API_KEY,
